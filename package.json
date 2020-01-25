@@ -1,0 +1,35 @@
+{
+  "name": "scooters-api",
+  "version": "1.0.0",
+  "description": "Scooters API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "npm run test:interfaces && npm run test:infrastructure && npm run test:actions",
+    "test:interfaces": "mocha --opts test/mocha.opts.interfaces",
+    "test:infrastructure": "mocha --opts test/mocha.opts.infrastructure",
+    "test:actions": "mocha --opts test/mocha.opts.actions",
+    "populate:scooters": "node src/interfaces/console/scooters/createScootersNearby.js"
+  },
+  "author": "David Rey <david.rey.acosta@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "deep-equal-in-any-order": "^1.0.13",
+    "mocha": "^6.1.4",
+    "sinon": "^7.3.2",
+    "sinon-chai": "^3.3.0",
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.5.12",
+    "uuid": "^3.3.2",
+    "yargs": "^13.2.4"
+  }
+}

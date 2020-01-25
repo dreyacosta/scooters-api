@@ -1,0 +1,2 @@
+test/interfaces/**/*.spec.js
+--recursive

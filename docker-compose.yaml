@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  api:
+    image: scooters-api
+    build: .
+    ports:
+      - 4000:4000
+    volumes:
+      - npm_cache:/root/.npm
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+
+  populate_api:
+    image: scooters-api
+    build: .
+    volumes:
+      - npm_cache:/root/.npm
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - .env
+    environment:
+      - APP_POPULATE=true
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:4-xenial
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  npm_cache:
+  mongo_data:
